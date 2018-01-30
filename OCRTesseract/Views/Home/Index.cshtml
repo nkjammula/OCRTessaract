@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <h3>Welcome to OCR Demo Using Tesseract</h3>
+</div>
+
+@*<div id="header"></div>*@
+<h6>Drop Image in the Box Below Box</h6>
+<div id="dropImage" class="imageTextDivs">
+    <img id="imagepreview" src="#" alt="Image Preview" />
+</div>
+
+<div id="meanConfidence">
+    <span>Mean Confidence </span>
+    <span id="meanConfidenceValue"></span>
+</div>
+
+
+<div id="renderTextFromImage" class="imageTextDivs">
+</div>
+
+@* Rendering Scripts at the end so that, page will load faster *@
+@section Scripts{
+    <script type="text/javascript">
+    </script>
+    @Scripts.Render("~/Scripts/Index.js");
+}

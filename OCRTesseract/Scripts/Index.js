@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //your code here
+   //
     $('#dropImage').on(
         'dragover',
         function (e) {
@@ -23,9 +23,10 @@ $(document).ready(function () {
                     e.stopPropagation();
                     var data = new FormData();
                     data.append("file", e.originalEvent.dataTransfer.files[0]);
-                    readURL(e.originalEvent.dataTransfer.files[0]);
+                    readUrl(e.originalEvent.dataTransfer.files[0]);
                     $("#imagepreview").show();
                     /*UPLOAD FILES HERE*/
+                    $("#renderTextFromImage").text("Extracting...");
                     $.ajax({
                         type: "POST",
                         url: '/Home/ProcessImage',
@@ -33,7 +34,6 @@ $(document).ready(function () {
                         processData: false,
                         data: data,
                         success: function (result) {
-                            console.log(result);
                             $("#renderTextFromImage").text(result.Text);
                             $("#meanConfidence #meanConfidenceValue").text(result.MeanConfidence + "%");
                         },
@@ -44,15 +44,12 @@ $(document).ready(function () {
                             console.log(err);
                         }
                     });
-                    upload(e.originalEvent.dataTransfer.files);
                 }
             }
         }
     );
-    function upload(files) {
-        alert('Upload ' + files.length + ' File(s).');
-    }
-    function readURL(input) {
+   
+    function readUrl(input) {
         if (input) {
             var reader = new FileReader();
             reader.onload = function (e) {

@@ -24,19 +24,18 @@ namespace OCRTesseract.Controllers
 
                 if (fileContent != null && fileContent.ContentLength > 0)
                 {
-                    // get a stream
-                    var stream = fileContent.InputStream;
-                    var testImagePath = Resources.ImagePath + fileContent.FileName;
-                    var dataPath = Resources.TesseractPath;
-                    // and optionally write the file to disk
-                    using (var tEngine = new TesseractEngine(dataPath, "eng", EngineMode.Default)) //creating the tesseract OCR engine with English as the language
+                    //Getting Image and Tesseract Frame work file path
+                    var imagePath = Resources.ImagePath + fileContent.FileName;
+                    var tessereactDataPath = Resources.TesseractPath;
+                    //Instantiating Tesseract engine
+                    using (var tesseractEngine = new TesseractEngine(tessereactDataPath, "eng", EngineMode.Default)) //creating the tesseract OCR engine with English as the language
                     {
-                        using (var img = Pix.LoadFromFile(testImagePath)) // Load of the image file from the Pix object which is a wrapper for Leptonica PIX structure
+                        using (var pixImg = Pix.LoadFromFile(imagePath)) // Load of the image file from the Pix object which is a wrapper for Leptonica PIX structure
                         {
-                            using (var page = tEngine.Process(img)) //process the specified image
+                            using (var page = tesseractEngine.Process(pixImg)) //process the specified image
                             {
-                                text = page.GetText(); //Gets the image's content as plain text.
-                                meanConfidence = page.GetMeanConfidence() * 100;
+                                text = page.GetText(); //Getting image's content as plain text.
+                                meanConfidence = page.GetMeanConfidence() * 100; //Converting mean confidence value to %;
                             }
                         }
                     }

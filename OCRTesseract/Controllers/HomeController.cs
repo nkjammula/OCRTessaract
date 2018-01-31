@@ -3,6 +3,7 @@ using System.IO;
 using System.Web.Mvc;
 using OCRTesseract.Properties;
 using Tesseract;
+using  HtmlBuilder;
 
 namespace OCRTesseract.Controllers
 {

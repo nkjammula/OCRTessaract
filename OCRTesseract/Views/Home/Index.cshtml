@@ -1,8 +1,11 @@
-﻿@{
+﻿@using HtmlBuilders
+@using HtmlBuilder
+    -
+@{
     ViewBag.Title = "Home Page";
 }
-
 <div>
+    @Html.Raw(HtmlBuilder.TextBoxTag("TextBox",""))
     <h3>Welcome to OCR Demo Using Tesseract</h3>
 </div>
 

@@ -1,10 +1,10 @@
 $(document).ready(function () {
     //your code here
-    var Header = {
+    var reusableText = {
         //default config
         config: {
-            el: '#header',
-            title: 'Some title'
+            el: '#reusableComponent',
+            title: 'I can be reusable all over the APP'
         },
 
         init: function (config) {
@@ -14,13 +14,13 @@ $(document).ready(function () {
     };
 
     $(function () {
-        Object.create(Header).init({
-            title: 'Some other title'
+        Object.create(reusableText).init({
+            title: 'I can be reusable all over the APP'
         });
 
-        Object.create(Header).init({
-            el: '#header2',
-            title: 'Yeah'
+        Object.create(reusableText).init({
+            el: '#anotherReusableText',
+            title: 'Hey Again I can be reusable all over the APP'
         });
     });
 });

@@ -5,11 +5,11 @@
     ViewBag.Title = "Home Page";
 }
 <div>
-    @Html.Raw(HtmlBuilder.TextBoxTag("TextBox",""))
+    @*@Html.Raw(HtmlBuilder.TextBoxTag("TextBox",""))*@
     <h3>Welcome to OCR Demo Using Tesseract</h3>
 </div>
 
-@*<div id="header"></div>*@
+<div id="reusableComponent"></div>
 <h6>Drop Image in the Box Below Box</h6>
 <div id="dropImage" class="imageTextDivs">
     <img id="imagepreview" src="#" alt="Image Preview" />
@@ -27,4 +27,5 @@
 @* Rendering Scripts at the end so that, page will load faster *@
 @section Scripts{
     @Scripts.Render("~/Scripts/Index.js");
+    @Scripts.Render("~/Scripts/HtmlBuilder.js");
 }
